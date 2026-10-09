@@ -1,0 +1,113 @@
+.section {
+  padding: 8rem 1.5rem;
+  background: var(--surface-alt);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: #ffffff;
+  padding: 4rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: var(--secondary);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.emailCard {
+  background: #eff6ff; /* Light Blue */
+  padding: 2rem;
+  border-radius: 16px;
+  display: inline-block;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.emailLabel {
+  display: block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.emailLink {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.emailLink:hover {
+  color: #1e3a8a; /* Darker Blue */
+  text-decoration: underline;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 1.25rem;
+  }
+
+  .container {
+    padding: 3rem 2rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 5.5rem 1rem;
+  }
+
+  .container {
+    padding: 2rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .emailCard {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .emailLink {
+    font-size: 1.1rem;
+    word-break: break-all;
+  }
+}

@@ -1,0 +1,750 @@
+.mainContainer {
+  background: #ffffff;
+}
+
+/* === Hero Section === */
+.heroSection {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #0f172a 100%);
+  color: white;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  opacity: 0.6;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(50px); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.heroLabel {
+  display: inline-block;
+  background: rgba(125, 243, 207, 0.12);
+  color: #7DF3CF;
+  border: 1px solid rgba(125, 243, 207, 0.25);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(5px);
+  animation: slideDown 0.8s ease-out;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  animation: fadeUp 1s ease-out 0.2s backwards;
+}
+
+.heroTitle span {
+  background: linear-gradient(90deg, #7DF3CF, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  animation: fadeUp 1s ease-out 0.4s backwards;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  animation: fadeUp 1s ease-out 0.6s backwards;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background: linear-gradient(135deg, #7DF3CF, #60a5fa);
+  color: #0f172a;
+  padding: 1rem 3rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 20px rgba(125, 243, 207, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 40px rgba(125, 243, 207, 0.5);
+}
+
+/* === Container === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #0891b2;
+}
+
+.sectionText {
+  color: #64748b;
+  font-size: 1.125rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* === Canal Direto Section === */
+.channelSection {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.channelLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.channelInfo .sectionTitle {
+  text-align: left;
+}
+
+.channelInfo .sectionText {
+  text-align: left;
+  margin: 0;
+}
+
+.channelVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.deviceMockup {
+  background: #0f172a;
+  border-radius: 24px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chatBubble {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px 16px 16px 4px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.chatBubble.chatResponse {
+  background: rgba(125, 243, 207, 0.1);
+  border-color: rgba(125, 243, 207, 0.2);
+  border-radius: 16px 16px 4px 16px;
+}
+
+.chatLabel {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.chatResponse .chatLabel {
+  color: #7DF3CF;
+}
+
+.chatBubble p {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* === Publicidade Section === */
+.publicitySection {
+  padding: 8rem 0;
+  background: #f8fafc;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.benefitCard {
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefitCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7DF3CF, #314E86);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  border-color: #7DF3CF;
+}
+
+.benefitCard:hover::before {
+  opacity: 1;
+}
+
+.benefitIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(125, 243, 207, 0.15), rgba(49, 78, 134, 0.1));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #314E86;
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover .benefitIcon {
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+  color: white;
+}
+
+.benefitTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.benefitDesc {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* === Audience Section (Cidadão / Servidor / Ouvidoria) === */
+.audienceSection {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 100%);
+}
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.audienceCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+}
+
+.audienceCard:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(125, 243, 207, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.audienceIconWrap {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(125, 243, 207, 0.2), rgba(96, 165, 250, 0.2));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #7DF3CF;
+}
+
+.audienceCard:hover .audienceIconWrap {
+  background: linear-gradient(135deg, #7DF3CF, #60a5fa);
+  color: #0f172a;
+}
+
+.audienceTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.audienceDesc {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* === Panel Section === */
+.panelSection {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.panelLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.panelTitle {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: #0f172a;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.panelText {
+  color: #64748b;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.panelList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panelList li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.panelList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+}
+
+.panelVisual {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* === Support Section === */
+.supportSection {
+  padding: 8rem 0;
+  background: #f8fafc;
+}
+
+.supportLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.chatMockup {
+  background: #0f172a;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 380px;
+}
+
+.chatHeader {
+  background: rgba(125, 243, 207, 0.1);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #7DF3CF;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.chatDot {
+  width: 10px;
+  height: 10px;
+  background: #7DF3CF;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.chatMessages {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.msgUser {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px 12px 12px 4px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  align-self: flex-start;
+  max-width: 85%;
+}
+
+.msgSupport {
+  background: rgba(125, 243, 207, 0.12);
+  color: #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 12px 12px 4px 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  align-self: flex-end;
+  max-width: 85%;
+  border: 1px solid rgba(125, 243, 207, 0.15);
+}
+
+.supportInfo .sectionTitle {
+  text-align: left;
+}
+
+.supportInfo .sectionText {
+  text-align: left;
+  margin: 0 0 1.5rem;
+}
+
+.supportHighlight {
+  background: linear-gradient(135deg, rgba(125, 243, 207, 0.08), rgba(49, 78, 134, 0.08));
+  border-left: 4px solid #7DF3CF;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 12px 12px 0;
+  color: #334155;
+  font-weight: 600;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* === Profile Section === */
+.profileSection {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.profileCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+}
+
+.profileCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  border-color: #7DF3CF;
+  background: white;
+}
+
+.profileIcon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(125, 243, 207, 0.15), rgba(49, 78, 134, 0.1));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #314E86;
+  transition: all 0.3s ease;
+}
+
+.profileCard:hover .profileIcon {
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+  color: white;
+}
+
+.profileCardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.profileCardDesc {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* === CTA Section === */
+.ctaSection {
+  padding: 8rem 0;
+  background: #0f172a;
+  text-align: center;
+  color: white;
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.ctaText {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Animations === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .channelLayout,
+  .panelLayout,
+  .supportLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .supportLayout {
+    direction: ltr;
+  }
+
+  .supportVisual {
+    order: -1;
+  }
+
+  .channelInfo .sectionTitle,
+  .supportInfo .sectionTitle {
+    text-align: center;
+  }
+
+  .channelInfo .sectionText,
+  .supportInfo .sectionText {
+    text-align: center;
+  }
+
+  .deviceMockup,
+  .chatMockup {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    min-height: 75vh;
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btnPrimary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .channelSection,
+  .publicitySection,
+  .audienceSection,
+  .panelSection,
+  .supportSection,
+  .profileSection {
+    padding: 5rem 0;
+  }
+
+  .benefitsGrid,
+  .audienceGrid,
+  .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: auto;
+    padding: 6rem 1rem 2.5rem;
+  }
+
+  .heroLabel {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .sectionHeader {
+    margin-bottom: 3rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .sectionText {
+    font-size: 1rem;
+  }
+
+  .channelSection,
+  .publicitySection,
+  .audienceSection,
+  .panelSection,
+  .supportSection,
+  .profileSection {
+    padding: 3.5rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .benefitCard,
+  .audienceCard,
+  .profileCard {
+    padding: 1.75rem;
+  }
+
+  .benefitTitle,
+  .audienceTitle,
+  .profileCardTitle {
+    font-size: 1.15rem;
+  }
+
+  .chatMockup {
+    max-width: 100%;
+  }
+
+  .ctaSection {
+    padding: 3.5rem 0;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btnPrimary {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}

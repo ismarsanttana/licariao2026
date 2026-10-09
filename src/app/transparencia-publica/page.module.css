@@ -1,0 +1,617 @@
+/* === Main Container === */
+.mainContainer {
+  background: #ffffff;
+}
+
+/* === Hero Section === */
+.heroSection {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 60%, #1e3a5f 100%);
+  color: white;
+  padding: 8rem 2rem 5rem;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(125, 243, 207, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 243, 207, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+  animation: gridFloat 25s linear infinite;
+}
+
+@keyframes gridFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  text-align: center;
+}
+
+.heroLabel {
+  display: inline-block;
+  background: rgba(125, 243, 207, 0.12);
+  color: #7DF3CF;
+  border: 1px solid rgba(125, 243, 207, 0.25);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  backdrop-filter: blur(5px);
+  animation: slideDown 0.8s ease-out;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  animation: fadeUp 1s ease-out 0.2s backwards;
+}
+
+.heroTitle span {
+  background: linear-gradient(90deg, #7DF3CF, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.9;
+  animation: fadeUp 1s ease-out 0.4s backwards;
+}
+
+/* === Container === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+/* === Diferenciais Section === */
+.differentialSection {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #0f172a;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.differentialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.differentialCard {
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.differentialCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7DF3CF, #314E86);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.differentialCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  border-color: #7DF3CF;
+  background: white;
+}
+
+.differentialCard:hover::before {
+  opacity: 1;
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(125, 243, 207, 0.15), rgba(49, 78, 134, 0.1));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: #314E86;
+  transition: all 0.3s ease;
+}
+
+.differentialCard:hover .cardIcon {
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+  color: white;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* === Assessoria Especializada === */
+.servicesSection {
+  padding: 8rem 0;
+  background: linear-gradient(180deg, #f0fdfa 0%, #f8fafc 100%);
+}
+
+.servicesLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.servicesTitle {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: #0f172a;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.servicesTitle span {
+  background: linear-gradient(90deg, #0c4a6e, #314E86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.serviceItem:hover {
+  transform: translateX(8px);
+  border-color: #7DF3CF;
+  box-shadow: 0 4px 12px rgba(125, 243, 207, 0.15);
+}
+
+.serviceBullet {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+}
+
+.serviceItem p {
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* === Resultados Section === */
+.resultsSection {
+  padding: 8rem 0;
+  background: #ffffff;
+}
+
+.resultsLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.resultsTitle {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  color: #0f172a;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.resultsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  background: #f0fdfa;
+  border: 1px solid rgba(125, 243, 207, 0.25);
+  transition: all 0.3s ease;
+}
+
+.resultItem:hover {
+  transform: translateX(8px);
+  background: #ffffff;
+  border-color: #7DF3CF;
+  box-shadow: 0 4px 12px rgba(125, 243, 207, 0.2);
+}
+
+.resultIcon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.resultItem p {
+  color: #334155;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* === Case de Sucesso === */
+.caseSection {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 100%);
+  color: white;
+}
+
+.caseContent {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.caseText {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+}
+
+.caseText strong {
+  color: #ffffff;
+}
+
+.caseHighlight {
+  margin-top: 2rem;
+  padding: 2rem 2.5rem;
+  background: rgba(125, 243, 207, 0.08);
+  border-left: 4px solid #7DF3CF;
+  border-radius: 0 16px 16px 0;
+}
+
+.caseHighlight p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #e2e8f0;
+}
+
+.caseHighlight strong {
+  color: #7DF3CF;
+}
+
+/* === Metodologia === */
+.methodSection {
+  padding: 8rem 0;
+  background: #f8fafc;
+}
+
+.methodTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.methodGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.methodStep {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.methodStep:hover {
+  transform: translateX(12px);
+  border-color: #7DF3CF;
+  box-shadow: 0 8px 24px rgba(125, 243, 207, 0.15);
+}
+
+.stepNumber {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7DF3CF, #314E86);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 60px;
+  text-align: center;
+}
+
+.stepTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.stepDesc {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* === CTA Section === */
+.ctaSection {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 60%, #1e3a5f 100%);
+  text-align: center;
+  color: white;
+}
+
+.ctaTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.ctaText {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btnPrimary {
+  display: inline-block;
+  background: linear-gradient(135deg, #7DF3CF, #60a5fa);
+  color: #0f172a;
+  padding: 1rem 3rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 25px rgba(125, 243, 207, 0.3);
+  text-decoration: none;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 45px rgba(125, 243, 207, 0.5);
+}
+
+/* === Animations === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .servicesLayout,
+  .resultsLayout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .differentialGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    min-height: 70vh;
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .differentialSection,
+  .servicesSection,
+  .resultsSection,
+  .methodSection {
+    padding: 5rem 0;
+  }
+
+  .differentialGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .methodStep {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .stepNumber {
+    font-size: 2rem;
+    min-width: 45px;
+  }
+
+  .caseSection {
+    padding: 4rem 0;
+  }
+
+  .caseHighlight {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: auto;
+    padding: 6rem 1rem 2.5rem;
+  }
+
+  .heroLabel {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .differentialSection,
+  .servicesSection,
+  .resultsSection,
+  .methodSection {
+    padding: 3.5rem 0;
+  }
+
+  .differentialCard {
+    padding: 1.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .cardDesc {
+    font-size: 0.9rem;
+  }
+
+  .serviceItem {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .resultItem {
+    padding: 0.75rem 1rem;
+  }
+
+  .methodStep {
+    padding: 1.25rem;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .stepNumber {
+    font-size: 1.75rem;
+    min-width: 40px;
+  }
+
+  .stepTitle {
+    font-size: 1.1rem;
+  }
+
+  .stepDesc {
+    font-size: 0.9rem;
+  }
+
+  .caseSection {
+    padding: 3rem 0;
+  }
+
+  .caseText {
+    font-size: 1rem;
+  }
+
+  .caseHighlight {
+    padding: 1.25rem;
+  }
+
+  .ctaSection {
+    padding: 3.5rem 0;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .btnPrimary {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}

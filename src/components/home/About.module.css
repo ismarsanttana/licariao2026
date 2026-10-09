@@ -1,0 +1,143 @@
+.section {
+  padding: 6rem 1.5rem;
+  background: #0f172a;
+  color: var(--surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.label {
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--surface);
+}
+
+.text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.highlight {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid #ffffff;
+  margin-top: 2rem;
+}
+
+.highlight p {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--surface);
+  font-style: italic;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--surface-hover);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.imageWrapper img {
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Responsive - Tablet / mobile stack */
+@media (max-width: 767px) {
+  .section {
+    padding: 4rem 1.25rem;
+  }
+
+  .container {
+    gap: 2.5rem;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .text {
+    font-size: 1rem;
+  }
+
+  .highlight {
+    text-align: left;
+  }
+
+  .highlight p {
+    font-size: 1.1rem;
+  }
+
+  .imageWrapper {
+    aspect-ratio: 1 / 1;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight p {
+    font-size: 1rem;
+  }
+
+  .imageWrapper {
+    max-width: 280px;
+    border-radius: 12px;
+  }
+}

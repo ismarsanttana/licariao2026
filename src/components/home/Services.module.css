@@ -1,0 +1,176 @@
+.section {
+  padding: 8rem 1.5rem;
+  background: var(--surface-alt);
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: 2.75rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.subtitle {
+  color: var(--secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  padding: 0 1rem;
+}
+
+/* Clean White Card Design */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 3rem;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  border: 1px solid var(--border-light);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(37, 99, 235, 0.1);
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 2rem;
+  color: #3E95EF;
+  background: #eff6ff;
+  padding: 14px;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icon {
+  background: #3E95EF;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.cardDescription {
+  color: var(--secondary);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  flex-grow: 1;
+  font-size: 1.05rem;
+}
+
+.link {
+  color: #3E95EF;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.link:hover {
+  gap: 1rem;
+  color: #1e3a8a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1.25rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: 3.5rem 1rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .icon {
+    width: 52px;
+    height: 52px;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.25rem;
+  }
+
+  .cardDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+}

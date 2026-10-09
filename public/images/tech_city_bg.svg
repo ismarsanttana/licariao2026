@@ -1,0 +1,48 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
+    </linearGradient>
+    <linearGradient id="buildingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#skyGradient)"/>
+  
+  <!-- Network Grid (Abstract Tech) -->
+  <g stroke="#94a3b8" stroke-width="0.5" opacity="0.15">
+    <line x1="0" y1="100" x2="1920" y2="100"/>
+    <line x1="0" y1="300" x2="1920" y2="300"/>
+    <line x1="0" y1="500" x2="1920" y2="500"/>
+    <line x1="0" y1="700" x2="1920" y2="700"/>
+    <line x1="0" y1="900" x2="1920" y2="900"/>
+    
+    <line x1="200" y1="0" x2="200" y2="1080"/>
+    <line x1="600" y1="0" x2="600" y2="1080"/>
+    <line x1="1000" y1="0" x2="1000" y2="1080"/>
+    <line x1="1400" y1="0" x2="1400" y2="1080"/>
+    <line x1="1800" y1="0" x2="1800" y2="1080"/>
+  </g>
+
+  <!-- City Skyline (Stylized) -->
+  <g fill="url(#buildingGradient)">
+    <!-- Back Layer -->
+    <path d="M0 1080 L0 800 L150 750 L300 820 L450 600 L600 750 L800 650 L1000 780 L1200 620 L1350 750 L1500 580 L1700 720 L1920 650 L1920 1080 Z" opacity="0.6"/>
+    
+    <!-- Middle Layer -->
+    <path d="M0 1080 L0 900 L100 850 L250 920 L350 750 L500 880 L700 800 L900 880 L1100 750 L1300 850 L1450 800 L1600 880 L1800 820 L1920 850 L1920 1080 Z" opacity="0.8"/>
+    
+    <!-- Front Layer - Tech Nodes -->
+    <circle cx="450" cy="600" r="3" fill="#3b82f6" opacity="0.6"/>
+    <circle cx="800" cy="650" r="3" fill="#3b82f6" opacity="0.6"/>
+    <circle cx="1200" cy="620" r="3" fill="#3b82f6" opacity="0.6"/>
+    <circle cx="1500" cy="580" r="3" fill="#3b82f6" opacity="0.6"/>
+    
+    <!-- Connection Lines for Nodes -->
+    <path d="M450 600 L800 650 L1200 620 L1500 580" stroke="#3b82f6" stroke-width="1" stroke-dasharray="5,5" opacity="0.3" fill="none"/>
+  </g>
+</svg>

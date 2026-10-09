@@ -1,0 +1,32 @@
+{
+  "name": "hebert-licariao-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "serve out -l 3000",
+    "preview": "npm run build && npm start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@types/d3-geo": "^3.1.0",
+    "d3-geo": "^3.1.1",
+    "framer-motion": "^12.33.0",
+    "next": "16.3.5",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "serve": "14.2.4",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
