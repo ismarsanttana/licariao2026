@@ -61,6 +61,8 @@ As URLs de SEO estão definidas para `https://licariao.com.br`. Se o domínio mu
 
 ## Publicação automática pelo GitHub
 
+Site de produção: [licariao.com.br](https://licariao.com.br). O endereço `www.licariao.com.br` redireciona ao domínio principal, preservando o caminho e os parâmetros da URL.
+
 O workflow `.github/workflows/deploy.yml` instala as dependências, executa o lint, gera o site e publica no Worker `hebert-licariao` a cada push na `main`. O arquivo `wrangler.jsonc` configura os arquivos estáticos e a página 404. O resultado pode ser acompanhado na aba **Actions** do GitHub.
 
 Para ativar o deploy, o responsável pela hospedagem deve configurar estes segredos em **Settings > Secrets and variables > Actions** do repositório:
@@ -75,6 +77,8 @@ O token deve usar o escopo **Workers especificados**, selecionando apenas `heber
 Os valores dos segredos não devem ser escritos no código nem em commits. O workflow disponibiliza a autenticação somente à etapa de publicação. A automação não exige acesso dos desenvolvedores ao painel Cloudflare.
 
 Builds de outras branches e de forks não publicam no site. Pull requests entram em produção após o merge na `main`. Mantenha a integração Workers Builds desse Worker desconectada para evitar um segundo caminho de publicação.
+
+O domínio e a rota `licariao.com.br/*` são administrados no painel Cloudflare pelo responsável pela hospedagem. Eles ficam fora da configuração de deploy do repositório para que a automação possa publicar com a permissão restrita ao Worker, sem acesso ao DNS ou aos demais serviços da conta.
 
 Para enviar alterações, o desenvolvedor precisa ser colaborador com permissão de escrita neste repositório. Copiar o projeto para outro repositório não atualiza o site conectado a este. Alterações por pull request entram em produção após o merge na `main`.
 
