@@ -61,22 +61,20 @@ As URLs de SEO estão definidas para `https://licariao.com.br`. Se o domínio mu
 
 ## Publicação automática pelo GitHub
 
-O arquivo `wrangler.jsonc` prepara a exportação estática para o Worker `hebert-licariao`. Ele contém apenas configurações públicas do projeto; a autenticação de publicação deve ser configurada no provedor de hospedagem.
+O workflow `.github/workflows/deploy.yml` instala as dependências, executa o lint, gera o site e publica no Worker `hebert-licariao` a cada push na `main`. O arquivo `wrangler.jsonc` configura os arquivos estáticos e a página 404. O resultado pode ser acompanhado na aba **Actions** do GitHub.
 
-Para ativar a integração, o responsável pela hospedagem deve abrir o Worker existente na Cloudflare e acessar **Settings > Builds > Connect**, selecionando este repositório. Use:
+Para ativar o deploy, o responsável pela hospedagem deve configurar estes segredos em **Settings > Secrets and variables > Actions** do repositório:
 
-| Configuração | Valor |
+| Segredo | Finalidade |
 | --- | --- |
-| Repositório | `ismarsanttana/licariao2026` |
-| Branch de produção | `main` |
-| Diretório raiz | Raiz do repositório |
-| Node.js | `22` (variável de build `NODE_VERSION`) |
-| Comando de build | `npm ci && npm run lint && npm run build` |
-| Comando de deploy | `npx --yes wrangler@4.131.1 deploy` |
+| `CLOUDFLARE_API_TOKEN` | Token da conta com **Individual Workers Editor** para **somente `hebert-licariao`**. |
+| `CLOUDFLARE_ACCOUNT_ID` | Identificador da conta onde esse Worker está hospedado. |
 
-Mantenha as builds de outras branches desativadas se desejar publicar apenas a `main`. A integração precisa ser ativada no painel; adicionar este arquivo ao repositório, sozinho, não ativa a automação.
+O token deve usar o escopo **Workers especificados**, selecionando apenas `hebert-licariao`. Não use tokens com permissões para a conta inteira, todos os Workers, DNS, outros domínios ou outros serviços. O limite de acesso é aplicado pela Cloudflare, mesmo que o código do workflow seja alterado. O token permite editar e publicar esse Worker; não oferece acesso aos demais projetos da conta.
 
-Após a conexão, cada push na `main` inicia uma nova build e, se ela concluir com sucesso, publica a versão no site. O lint e o build precisam passar para que a publicação prossiga. O resultado pode ser acompanhado pelo status do commit no GitHub e pelo histórico de builds da Cloudflare.
+Os valores dos segredos não devem ser escritos no código nem em commits. O workflow disponibiliza a autenticação somente à etapa de publicação. A automação não exige acesso dos desenvolvedores ao painel Cloudflare.
+
+Builds de outras branches e de forks não publicam no site. Pull requests entram em produção após o merge na `main`. Mantenha a integração Workers Builds desse Worker desconectada para evitar um segundo caminho de publicação.
 
 Para enviar alterações, o desenvolvedor precisa ser colaborador com permissão de escrita neste repositório. Copiar o projeto para outro repositório não atualiza o site conectado a este. Alterações por pull request entram em produção após o merge na `main`.
 
