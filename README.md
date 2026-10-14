@@ -59,6 +59,29 @@ O arquivo `public/_headers` contém regras de segurança e cache para provedores
 
 As URLs de SEO estão definidas para `https://licariao.com.br`. Se o domínio mudar, revise `src/lib/metadata.ts`, `src/app/robots.ts` e `src/app/sitemap.ts`.
 
+## Publicação automática pelo GitHub
+
+O arquivo `wrangler.jsonc` prepara a exportação estática para o Worker `hebert-licariao`. Ele contém apenas configurações públicas do projeto; a autenticação de publicação deve ser configurada no provedor de hospedagem.
+
+Para ativar a integração, o responsável pela hospedagem deve abrir o Worker existente na Cloudflare e acessar **Settings > Builds > Connect**, selecionando este repositório. Use:
+
+| Configuração | Valor |
+| --- | --- |
+| Repositório | `ismarsanttana/licariao2026` |
+| Branch de produção | `main` |
+| Diretório raiz | Raiz do repositório |
+| Node.js | `22` (variável de build `NODE_VERSION`) |
+| Comando de build | `npm ci && npm run lint && npm run build` |
+| Comando de deploy | `npx --yes wrangler@4.131.1 deploy` |
+
+Mantenha as builds de outras branches desativadas se desejar publicar apenas a `main`. A integração precisa ser ativada no painel; adicionar este arquivo ao repositório, sozinho, não ativa a automação.
+
+Após a conexão, cada push na `main` inicia uma nova build e, se ela concluir com sucesso, publica a versão no site. O lint e o build precisam passar para que a publicação prossiga. O resultado pode ser acompanhado pelo status do commit no GitHub e pelo histórico de builds da Cloudflare.
+
+Para enviar alterações, o desenvolvedor precisa ser colaborador com permissão de escrita neste repositório. Copiar o projeto para outro repositório não atualiza o site conectado a este. Alterações por pull request entram em produção após o merge na `main`.
+
+Não adicione tokens de hospedagem, senhas ou arquivos de autenticação ao repositório. A gestão da conexão e das credenciais fica com o responsável pela hospedagem.
+
 ## Continuidade do desenvolvimento
 
 - O conteúdo e o visual das páginas estão em `src/app` e `src/components`, com estilos em CSS Modules.
