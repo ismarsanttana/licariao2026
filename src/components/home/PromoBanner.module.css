@@ -1,0 +1,361 @@
+/* Banner rotativo (Hórus / ILT) no topo do hero.
+   Mesma largura do cabeçalho (do "LICARIÃO" até o botão "Contato"). */
+.wrap {
+  --banner-neon: #5CE6FF;        /* azul neon do slide ILT */
+  --banner-azul: #314E86;        /* azul da Licarião (textos e botão do slide Hórus) */
+  --banner-claro: #E2ECFB;       /* fundo claro do slide Hórus */
+  --banner-altura: 128px;        /* altura do banner no computador */
+  --banner-tempo: 10s;           /* tempo de cada slide */
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  margin: 1.25rem auto 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.promo {
+  position: relative;
+  height: var(--banner-altura);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b1630;           /* evita "piscar" claro durante a troca */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 2px 4px rgba(20, 37, 74, 0.12),
+    0 18px 40px -14px rgba(49, 78, 134, 0.55);
+  color: #fff;
+  isolation: isolate;
+}
+/* Borda fina por cima de tudo */
+.promo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 4;
+}
+/* Trilho da barra de progresso */
+.promo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 2;
+}
+
+/* Cada slide ocupa o banner inteiro; só o ativo aparece */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 76px;
+  isolation: isolate;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+}
+.slide.isActive {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease, visibility 0s;
+}
+/* O conteúdo desliza; o fundo só faz o fade (fica mais suave) */
+.slide > * {
+  transform: translateX(18px);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide.isActive > * { transform: none; }
+.slide.isLeaving > * { transform: translateX(-18px); }
+
+/* Fundos de cada slide (gradiente + brilho + textura de grade) */
+.slideIlt {
+  background:
+    radial-gradient(260px 160px at 110px 50%, rgba(92, 230, 255, 0.22), transparent 70%),
+    radial-gradient(420px 220px at 100% 0%, rgba(49, 78, 134, 0.9), transparent 70%),
+    linear-gradient(110deg, #03060d 0%, #0f1e3d 45%, #26437a 100%);
+}
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 75%);
+          mask-image: linear-gradient(90deg, transparent 20%, #000 75%);
+  pointer-events: none;
+}
+
+/* Logo: moldura de vidro */
+.logo {
+  flex: none;
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(92, 230, 255, 0.35);
+  padding: 9px;
+  object-fit: contain;
+  box-shadow: 0 0 22px -4px rgba(92, 230, 255, 0.45), 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Textos */
+.text { flex: 1; min-width: 0; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.tag::before {                   /* pontinho antes da etiqueta */
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.slideIlt .tag {
+  color: var(--banner-neon);
+  background: rgba(92, 230, 255, 0.1);
+  border: 1px solid rgba(92, 230, 255, 0.35);
+}
+.slideIlt .tag::before {
+  box-shadow: 0 0 8px var(--banner-neon);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse { 50% { opacity: 0.35; } }
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: 7px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hl {
+  color: var(--banner-neon);
+  text-shadow: 0 0 14px rgba(92, 230, 255, 0.55);
+}
+.desc {
+  font-size: 13px;
+  line-height: 1.45;
+  margin-top: 4px;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.78);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pontinhos */
+.dots { display: flex; gap: 6px; flex: none; }
+.dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.dot:hover { background: rgba(255, 255, 255, 0.6); }
+.dot.dotOn { width: 20px; }
+.slideIlt .dot.dotOn { background: var(--banner-neon); box-shadow: 0 0 8px var(--banner-neon); }
+
+/* Botão "Conhecer →" */
+.btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 20px 12px 22px;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:hover svg { transform: translateX(3px); }
+.slideIlt .btn {
+  background: var(--banner-neon);
+  color: #03060d;
+  box-shadow: 0 0 18px rgba(92, 230, 255, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+}
+.slideIlt .btn:hover { box-shadow: 0 0 26px rgba(92, 230, 255, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.35) inset; }
+
+/* Setas nas pontas */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease, opacity 0.25s ease;
+}
+.arrow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.arrow:hover { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.45); }
+.arrowPrev { left: 20px; }
+.arrowNext { right: 20px; }
+/* No computador as setas ficam discretas e acendem com o mouse em cima */
+@media (hover: hover) {
+  .arrow { opacity: 0.55; }
+  .promo:hover .arrow { opacity: 1; }
+}
+
+/* Barra de progresso (enche durante o tempo de cada slide) */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  z-index: 3;
+  border-radius: 0 3px 3px 0;
+  background: var(--banner-neon);
+  box-shadow: 0 0 10px var(--banner-neon);
+  animation: progress var(--banner-tempo) linear forwards;
+}
+.promo:hover .progress { animation-play-state: paused; }   /* pausa com o mouse em cima */
+@keyframes progress { from { width: 0; } to { width: 100%; } }
+
+/* ----- Slide Hórus: versão clara, com textos em azul ----- */
+.slideHorus {
+  color: var(--banner-azul);
+  background:
+    radial-gradient(260px 160px at 110px 50%, rgba(255, 255, 255, 0.55), transparent 70%),
+    radial-gradient(520px 260px at 100% 100%, rgba(92, 198, 214, 0.32), transparent 70%),
+    linear-gradient(110deg, var(--banner-claro) 0%, #d4e3f8 50%, #c2d6f3 100%);
+}
+.slideHorus::before {            /* grade em azul bem fraco */
+  background-image:
+    linear-gradient(rgba(49, 78, 134, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(49, 78, 134, 0.07) 1px, transparent 1px);
+}
+.slideHorus .logo {
+  background: #fff;
+  padding: 6px;
+  border-color: rgba(49, 78, 134, 0.18);
+  box-shadow: 0 8px 18px -10px rgba(49, 78, 134, 0.5);
+}
+.slideHorus .tag {
+  color: #1f6fb0;
+  background: rgba(31, 111, 176, 0.08);
+  border: 1px solid rgba(31, 111, 176, 0.3);
+}
+.slideHorus .title { color: #14254a; }
+.slideHorus .hl {
+  color: #1f6fb0;
+  text-shadow: none;
+}
+.slideHorus .desc { color: rgba(20, 37, 74, 0.72); }
+.slideHorus .dot { background: rgba(49, 78, 134, 0.25); }
+.slideHorus .dot:hover { background: rgba(49, 78, 134, 0.45); }
+.slideHorus .dot.dotOn { background: var(--banner-azul); }
+.slideHorus .btn {
+  background: var(--banner-azul);
+  color: #fff;
+  box-shadow: 0 8px 18px -8px rgba(49, 78, 134, 0.7);
+}
+.slideHorus .btn:hover { box-shadow: 0 10px 22px -8px rgba(49, 78, 134, 0.85); }
+
+/* Setas, borda e barra mudam de cor quando o Hórus (fundo claro) está na tela */
+.promoLight::before { border-color: rgba(49, 78, 134, 0.14); }
+.promoLight::after { background: rgba(49, 78, 134, 0.1); }
+.promoLight .progress { background: #1f6fb0; box-shadow: none; }
+.promoLight .arrow {
+  color: var(--banner-azul);
+  border-color: rgba(49, 78, 134, 0.25);
+  background: rgba(255, 255, 255, 0.6);
+}
+.promoLight .arrow:hover { background: #fff; border-color: rgba(49, 78, 134, 0.45); }
+.promo::before, .promo::after { transition: background 0.4s ease, border-color 0.4s ease; }
+
+.promo :focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.promoLight :focus-visible { outline-color: var(--banner-azul); }
+
+/* Tablet */
+@media (max-width: 968px) {
+  .wrap { --banner-altura: 112px; }
+  .slide { padding: 0 68px; gap: 18px; }
+  .logo { width: 60px; height: 60px; }
+  .desc { -webkit-line-clamp: 1; font-size: 12.5px; }
+  .title { font-size: 18px; }
+}
+@media (max-width: 760px) {
+  .desc { display: none; }
+}
+
+/* Celular: sem setas (arrasta com o dedo), pontinhos embaixo e botão só com a seta */
+@media (max-width: 600px) {
+  .wrap { --banner-altura: 116px; padding: 0 1rem; margin: 1rem auto 1.25rem; }
+  .promo { border-radius: 16px; }
+  .slide { padding: 0 16px 10px; gap: 12px; }
+  .logo { width: 52px; height: 52px; border-radius: 13px; padding: 7px; }
+  .tag { font-size: 9.5px; padding: 2px 8px; }
+  .title { white-space: normal; font-size: 15px; margin-top: 5px; }
+  .dots {
+    position: absolute;
+    left: 50%;
+    bottom: 11px;
+    translate: -50% 0;
+  }
+  .btn { width: 42px; height: 42px; padding: 0; justify-content: center; }
+  .btn span { display: none; }
+  .btn svg { width: 18px; height: 18px; }
+  .arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide.isActive, .slide > * { transition: none; }
+  .slide > *, .slide.isLeaving > * { transform: none; }
+  .slideIlt .tag::before { animation: none; }
+}

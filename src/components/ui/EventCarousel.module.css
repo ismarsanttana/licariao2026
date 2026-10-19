@@ -27,10 +27,17 @@
 }
 
 /* Carousel */
+.carousel {
+  position: relative;
+}
+
 .carouselWrapper {
   width: 100%;
   overflow: hidden;
   cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -79,6 +86,82 @@
   transform: scale(1.08);
 }
 
+.carouselWrapper.dragging {
+  cursor: grabbing;
+}
+
+.carouselWrapper.dragging .slide,
+.carouselWrapper.dragging .image {
+  transform: none;
+}
+
+/* Arrows: translucent so the photos stay visible underneath */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #0f172a;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.arrowPrev {
+  left: 1rem;
+}
+
+.moreWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  padding: 0 1rem;
+}
+
+.moreBtn {
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid #0c4a6e;
+  color: #0c4a6e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.moreBtn:hover {
+  background: #0c4a6e;
+  color: #ffffff;
+}
+
+.arrowNext {
+  right: 1rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .section {
@@ -97,6 +180,19 @@
     width: 220px;
     height: 200px;
     min-width: 220px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrowPrev {
+    left: 0.5rem;
+  }
+
+  .arrowNext {
+    right: 0.5rem;
   }
 
   .carouselWrapper {

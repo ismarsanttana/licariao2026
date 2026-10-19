@@ -3,21 +3,24 @@
 import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import * as d3 from 'd3-geo';
 import type { FeatureCollection, Geometry } from 'geojson';
-import { clients, type Client } from '@/data/clients';
+import {
+  formatYears,
+  getClientLocations,
+  joinList,
+  normalizeCityName,
+  type ClientLocation,
+  type StateCode,
+} from '@/data/clients';
 import styles from './ClientsMap.module.css';
 
 type GeoJsonData = FeatureCollection<Geometry, { name: string }>;
-type SelectedCity = Omit<Client, 'city'> & {
-  name: string;
+type SelectedCity = ClientLocation & {
   x: number;
   y: number;
 };
 
-const normalizeCityName = (name: string) =>
-  name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-
 export default function ClientsMap() {
-  const [activeState, setActiveState] = useState<'PB' | 'RN' | 'CE' | 'PE' | 'RO'>('PB');
+  const [activeState, setActiveState] = useState<StateCode>('PB');
   const [geoDataPB, setGeoDataPB] = useState<GeoJsonData | null>(null);
   const [geoDataRN, setGeoDataRN] = useState<GeoJsonData | null>(null);
   const [geoDataCE, setGeoDataCE] = useState<GeoJsonData | null>(null);
@@ -57,9 +60,7 @@ export default function ClientsMap() {
 
   const clientsByCity = useMemo(
     () => new Map(
-      clients
-        .filter((client) => client.state === activeState)
-        .map((client) => [normalizeCityName(client.city), client]),
+      getClientLocations(activeState).map((location) => [normalizeCityName(location.city), location]),
     ),
     [activeState],
   );
@@ -105,7 +106,7 @@ export default function ClientsMap() {
     return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
-  const handleStateChange = (state: Client['state']) => {
+  const handleStateChange = (state: StateCode) => {
     setActiveState(state);
     setZoomLevel(1);
     setPanOffset({ x: 0, y: 0 });
@@ -168,16 +169,15 @@ export default function ClientsMap() {
   }, []);
 
 
-  const handleCityClick = (event: React.MouseEvent, cityName: string, clientData: Client | null) => {
+  const handleCityClick = (event: React.MouseEvent, clientData: ClientLocation | null) => {
     if (!clientData) return;
-    
+
     // Get relative position in the container
     const rect = mapRef.current?.getBoundingClientRect();
     if (rect) {
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      const { state, type, description } = clientData;
-      setSelectedCity({ name: cityName, state, type, description, x, y });
+      setSelectedCity({ ...clientData, x, y });
     }
   };
 
@@ -255,7 +255,7 @@ export default function ClientsMap() {
                 >
                   &times;
                 </button>
-                <strong>{selectedCity.name}</strong>
+                <strong>{selectedCity.city}</strong>
                 <span className={styles.tooltipState}>
                   {selectedCity.state === 'PB' ? 'Paraíba' : 
                    selectedCity.state === 'RN' ? 'Rio Grande do Norte' : 
@@ -265,8 +265,15 @@ export default function ClientsMap() {
                    selectedCity.state}
                 </span>
                 <div className={styles.tooltipDivider}></div>
-                <div className={styles.tooltipType}>{selectedCity.type}</div>
-                <div className={styles.tooltipDesc}>{selectedCity.description}</div>
+                {selectedCity.contracts.map((contract) => (
+                  <div key={contract.orgao} className={styles.tooltipContract}>
+                    <div className={styles.tooltipType}>{contract.orgao}</div>
+                    <div className={styles.tooltipDesc}>{joinList(contract.services)}</div>
+                    {contract.years.length > 0 && (
+                      <div className={styles.tooltipYears}>{formatYears(contract.years)}</div>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
 
@@ -291,7 +298,7 @@ export default function ClientsMap() {
                     fill={isClient ? 'var(--accent)' : 'rgba(0,0,0,0.1)'}
                     stroke={isClient ? 'var(--primary)' : 'rgba(0,0,0,0.05)'}
                     strokeWidth={isClient ? 1 : 0.5}
-                    onClick={(e) => handleCityClick(e, cityName, clientData)}
+                    onClick={(e) => handleCityClick(e, clientData)}
                     style={{
                       fill: isClient ? '#3E95EF' : 'rgba(150, 150, 150, 0.2)', // Blue as requested for clients
                       stroke: '#fff',

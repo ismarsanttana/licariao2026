@@ -217,3 +217,15 @@
     max-width: 300px;
   }
 }
+
+/* Banner rotativo (PromoBanner) no topo: o hero passa a empilhar,
+   banner em cima e conteúdo logo abaixo */
+.hero {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero .container {
+  flex: none;
+  align-items: start;
+}

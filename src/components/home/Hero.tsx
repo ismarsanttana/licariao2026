@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Hero.module.css';
+import PromoBanner from './PromoBanner';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
+      <PromoBanner />
+
       <div className={styles.container}>
         <div className={styles.contentLeft}>
           <span className={styles.label}>Referência em Gestão Pública</span>

@@ -196,12 +196,12 @@ export default function EstruturaPage() {
               </div>
             </div>
 
-            {/* Capacho Entrada */}
+            {/* Sala de Reunião 1 */}
             <div className={styles.mosaicItem}>
               <div className={styles.imagePlaceholder}>
                 <Image
-                  src="/images/estrutura/capacho-entrada.jpeg"
-                  alt="Capacho de Entrada - Licarião"
+                  src="/images/estrutura/sala-reuniao1.jpeg"
+                  alt="Sala de Reunião - Licarião"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
@@ -220,12 +220,12 @@ export default function EstruturaPage() {
               </div>
             </div>
 
-            {/* Capacho Assessoria */}
+            {/* Sala de Reunião 2 */}
             <div className={styles.mosaicItem}>
               <div className={styles.imagePlaceholder}>
                 <Image
-                  src="/images/estrutura/capacho-assessoria.jpeg"
-                  alt="Capacho Licarião Assessoria e Transparência"
+                  src="/images/estrutura/sala-reuniao2.jpeg"
+                  alt="Sala de Reunião - Transparência que Transforma"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
@@ -271,18 +271,6 @@ export default function EstruturaPage() {
             </div>
 
 
-
-            {/* Item 8 - Small */}
-            <div className={styles.mosaicItem}>
-              <div className={styles.imagePlaceholder}>
-                <Image
-                  src="/images/estrutura/foto8.jpg"
-                  alt="Estrutura Interna 3"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                />
-              </div>
-            </div>
 
             {/* Item 9 - Small */}
             <div className={styles.mosaicItem}>

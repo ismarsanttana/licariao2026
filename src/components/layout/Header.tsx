@@ -56,6 +56,9 @@ export default function Header() {
               <Link href="/horus" className={styles.dropdownItem}>
                 Hórus
               </Link>
+              <a href="https://ilt-licariao.vercel.app/" className={styles.dropdownItem} target="_blank" rel="noopener noreferrer">
+                ILT - Índice Licarião de Transparência
+              </a>
             </div>
           </div>
 
@@ -121,6 +124,9 @@ export default function Header() {
             <Link href="/horus" className={styles.mobileSubLink} onClick={closeMenu}>
               Hórus
             </Link>
+            <a href="https://ilt-licariao.vercel.app/" className={styles.mobileSubLink} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+              ILT - Índice Licarião de Transparência
+            </a>
           </div>
         </div>
 

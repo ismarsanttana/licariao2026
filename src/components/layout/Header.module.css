@@ -310,3 +310,8 @@
     display: flex;
   }
 }
+
+/* Nomes longos no menu (ex.: ILT) ficam numa linha só */
+.dropdownItem {
+  white-space: nowrap;
+}

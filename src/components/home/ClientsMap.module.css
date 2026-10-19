@@ -215,6 +215,19 @@
   white-space: normal;
 }
 
+.tooltipContract + .tooltipContract {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.tooltipYears {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3b82f6;
+}
+
 .cityPath {
   transition: fill 0.3s ease, stroke-width 0.3s ease;
   cursor: pointer;

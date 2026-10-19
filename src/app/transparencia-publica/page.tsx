@@ -145,6 +145,7 @@ export default function TransparenciaPublicaPage() {
         imagePositions={imagePositions}
         title="Eventos, parceiros e premiações"
         subtitle="Registros de participações em eventos, premiações e entregas de selos de transparência por todo o Brasil."
+        moreLink={{ href: '/transparencia-publica/fotos', label: 'Mostrar todas as fotos' }}
       />
 
       {/* Case de Sucesso / Presença */}
